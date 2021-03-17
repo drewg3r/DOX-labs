@@ -49,9 +49,10 @@ class Lab2:
         # Calculate main deviation
         m_deviation = math.sqrt((2*(2*self.m-2))/(self.m*(self.m-4)))
 
-        Fuv1 = d1/d2
-        Fuv2 = d3/d1
-        Fuv3 = d3/d2
+        # FIXED: calculating Fuv depending on which value is greater
+        Fuv1 = d1/d2 if d1>=d2 else d2/d1
+        Fuv2 = d3/d1 if d3>=d1 else d1/d3
+        Fuv3 = d3/d2 if d3>=d2 else d2/d3
 
         sigma_uv1 = ((self.m - 2)/self.m) * Fuv1
         sigma_uv2 = ((self.m - 2)/self.m) * Fuv2
