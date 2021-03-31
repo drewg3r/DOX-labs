@@ -9,6 +9,7 @@ import math
 import random
 import numpy as np
 from tabulate import tabulate
+from time import perf_counter
 
 
 class Lab3:
@@ -290,16 +291,17 @@ class Lab3:
         self.Y.append([9, 14, 16])
 
 
-# Creating Lab2 object with variant 122 parameters(test_y=False: using random values)
-# lab2 = Lab2(x1min=-5, x1max=15, x2min=10, x2max=60, ymin=-20, ymax=80, test_y=False)
-# lab2.uniformity_of_dispersion_check()
-# lab2.normalize_regression_factors()
-# lab2.naturalize_regression_factors()
-
 lab3 = Lab3(-5, 15, 10, 60, 10, 20)
 lab3.normalize_regression_factors()
 print("\nCochran test:")
+time_measurement_start = perf_counter()
 lab3.cochran_test()
+time_measurement_stop = perf_counter()
+print(
+    "Elapsed time: {:.9f} seconds".format(
+        time_measurement_stop - time_measurement_start
+    )
+)
 print("\nStudent's t-test")
 lab3.student_crit_check()
 print("\nF-test")
