@@ -2,6 +2,25 @@
 
 **Objective:** To conduct a three-factor experiment based on quadratic terms, using a central orthogonal composition plan. 
 
+## 03.05.2021 UPDATE:
+Displaying time spent on each check
+```
+✅Cochran’s C test passed
+Elapsed time: 0.000135553 seconds
+
+...
+
+Check values without excluded factors:
+y1 = 200.742
+...
+Elapsed time: 0.001046504 seconds
+
+...
+
+✅F-test passed/model is adequate
+Elapsed time: 0.000042980 seconds
+```
+
 ## Test run
 ```
 > python3 ./main.py 

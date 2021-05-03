@@ -10,6 +10,7 @@ import random
 from tabulate import tabulate
 import numpy as np
 import math
+import time
 
 
 def get_avg(array):
@@ -258,6 +259,7 @@ for i in range(15):
 sigma = get_dispersion([y1, y2, y3], avg_y)
 
 print("\nCochran test:\nDispersions:")
+time_measurement_start = time.perf_counter()
 for i in range(15):
     print("d{} = {:.2f}".format(i + 1, sigma[i]))
 
@@ -269,8 +271,15 @@ if gp < 0.3346:
     print("✅Cochran’s C test passed")
 else:
     print("❌Cochran’s C test failed")
+time_measurement_stop = time.perf_counter()
+print(
+    "Elapsed time: {:.9f} seconds".format(
+        time_measurement_stop - time_measurement_start
+    )
+)
 
 print("\n\nStudent's t-test")
+time_measurement_start = time.perf_counter()
 sb = sum(sigma) / n
 s2bs = sb / (n * m)
 sbs = math.sqrt(s2bs)
@@ -323,8 +332,15 @@ for i in range(11):
 print("\nCheck values without excluded factors:")
 for i in range(10):
     print("y{} = {:.3f}".format(i + 1, y_[i]))
+time_measurement_stop = time.perf_counter()
+print(
+    "Elapsed time: {:.9f} seconds".format(
+        time_measurement_stop - time_measurement_start
+    )
+)
 
-print("F-test")
+print("\nF-test")
+time_measurement_start = time.perf_counter()
 print("d = {}".format(d))
 s2ad = (m / (n - d)) * sum((y_[i] - avg_y[i]) ** 2 for i in range(4))
 print("S2ad = {:.3f}".format(s2ad))
@@ -338,3 +354,9 @@ if Fp < F8_table:
     print("✅F-test passed/model is adequate")
 else:
     print("❌F-test failed/model is NOT adequate")
+time_measurement_stop = time.perf_counter()
+print(
+    "Elapsed time: {:.9f} seconds".format(
+        time_measurement_stop - time_measurement_start
+    )
+)
