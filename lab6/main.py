@@ -253,11 +253,18 @@ print(
     )
 )
 
-while not cochran_criteria(m, N, y_arr):
-    m += 1
-y_arr = generate_y(m, natural_plan)
-coefficients = find_coefficients(natural_plan, y_arr)
-print_equation(coefficients)
-importance = student_criteria(m, N, y_arr, coefficients)
-d = len(list(filter(None, importance)))
-fisher_criteria(m, N, d, natural_plan, y_arr, coefficients, importance)
+disps = 0
+
+for i in range(100):
+    if not cochran_criteria(m, N, y_arr):
+        break
+    else:
+        disps += 1
+    y_arr = generate_y(m, natural_plan)
+    coefficients = find_coefficients(natural_plan, y_arr)
+    print_equation(coefficients)
+    importance = student_criteria(m, N, y_arr, coefficients)
+    d = len(list(filter(None, importance)))
+    fisher_criteria(m, N, d, natural_plan, y_arr, coefficients, importance)
+
+print("\n\nUniformity of dispersion {}/100".format(disps))

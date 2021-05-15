@@ -2,6 +2,16 @@
 
 **Objective:** To conduct a three-factor experiment based on quadratic terms, using a central orthogonal composition plan. 
 
+## 15.05.2021 UPDATE:
+Displaying number of success uniformity of dispersion checks
+```
+Regression equation: y = -102.40 +7.14*x1 +4.75*x2 +19.48*x3 +6.90*x12 +0.91*x13 +3.50*x23 +0.90*x123 +6.46*x1^2 +4.36*x3^2
+Fp = 0.7766059560024655, Ft = 2.7141
+✅F-test passed/model is adequate
+
+Uniformity of dispersion 100/100
+```
+
 ## Test run
 ```
 > python3 ./main.py 
